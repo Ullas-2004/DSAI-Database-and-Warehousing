@@ -1,49 +1,117 @@
 # GreenTrace Database and Warehousing Project
 
-GreenTrace is a database and warehousing project for ESG/carbon emission tracking. The project includes a MySQL warehouse schema, ETL scripts, sample exported datasets, backend APIs, and a frontend dashboard.
+GreenTrace is an ESG data warehousing project for carbon-emission tracking, carbon-credit ledger management, data lineage, and dashboard-based reporting. It demonstrates a complete Data Vault 2.0 style warehouse using MySQL, Python ETL scripts, backend APIs, exported datasets, reports, and a frontend dashboard.
 
-## Contents
+## Project Highlights
 
-- `sql/create_schema.sql` - warehouse schema definition
-- `etl/` - CSV loading, emissions calculation, ledger, data mart, and lineage pipelines
-- `backend/` - backend API and live data modules
-- `frontend/` - dashboard and architecture pages
-- `datasets/` - sample GreenTrace CSV export
-- `reports/` - phase reports and final report notes
-- `PPT.pptx` - project presentation
-- `Report.pdf` - final project report
-- `.env.example` - example database connection configuration
+- Designs a Data Vault 2.0 warehouse with hubs, links, satellites, business vault tables, and data marts.
+- Loads ESG and sustainability datasets into MySQL through Python ETL scripts.
+- Calculates Scope 2 and Scope 3 emissions.
+- Implements a carbon-credit ledger to track issue and retire transactions.
+- Maintains lineage from source data to reporting-ready data marts.
+- Provides dashboard and architecture pages for presentation and review.
+
+## Tech Stack
+
+| Area | Tools |
+| --- | --- |
+| Database | MySQL |
+| ETL | Python, Pandas, SQLAlchemy, PyMySQL |
+| Backend | Flask, Flask-CORS |
+| Frontend | HTML, CSS, JavaScript |
+| Reporting | PDF report, phase reports, PowerPoint presentation |
+| Architecture | Data Vault 2.0, carbon ledger, ESG data mart |
+
+## Repository Structure
+
+```text
+.
+|-- sql/
+|   +-- create_schema.sql
+|-- etl/
+|   |-- load_csv_to_mysql.py
+|   |-- calc_emissions.py
+|   |-- ledger_pipeline.py
+|   |-- datamart_pipeline.py
+|   +-- lineage_pipeline.py
+|-- backend/
+|   +-- app.py
+|-- frontend/
+|   |-- index.html
+|   |-- dashboard.html
+|   +-- architecture.html
+|-- datasets/
+|-- reports/
+|-- Report.pdf
+|-- PPT.pptx
+|-- .env.example
+```
+
+## Implementation Phases
+
+| Phase | Work Completed |
+| --- | --- |
+| 1 | Dataset analysis and source-file review |
+| 2 | Data Vault 2.0 schema design in MySQL |
+| 3 | Python ETL pipeline for loading and cleaning data |
+| 4 | Scope 2 and Scope 3 emissions calculation |
+| 5 | Carbon-credit ledger with issue/retire tracking |
+| 6 | Data mart for CSRD-style reporting |
+| 7 | Data lineage tracking for auditability |
+| 8 | Dashboard and visualization layer |
 
 ## Setup
 
-Create a local `.env` file from `.env.example` and update the password/database URL for your MySQL setup.
+Create a local environment file:
 
 ```cmd
 copy .env.example .env
 ```
 
-Install the Python packages used by the backend and ETL scripts:
+Update `.env` with your local MySQL credentials.
+
+Install Python dependencies:
 
 ```cmd
 pip install flask flask-cors pandas sqlalchemy pymysql python-dotenv
 ```
 
-## Run
+Create the warehouse schema using:
 
-Create the database schema using `sql/create_schema.sql`, then run the ETL scripts from the project root as needed:
+```text
+sql/create_schema.sql
+```
+
+## How to Run
+
+Load datasets into MySQL:
 
 ```cmd
 python etl\load_csv_to_mysql.py
+```
+
+Calculate emissions:
+
+```cmd
 python etl\calc_emissions.py
+```
+
+Build the reporting data mart:
+
+```cmd
 python etl\datamart_pipeline.py
 ```
 
-Start the backend/live frontend flow:
+Run the live frontend flow:
 
 ```cmd
 run_live_frontend.cmd
 ```
 
+## Results
+
+The project implements an auditable ESG warehouse that connects raw sustainability data, emissions calculations, carbon-credit accounting, lineage tracking, and dashboard-ready reporting outputs. The final report documents a full eight-phase implementation and shows how structured warehousing improves traceability for carbon reporting.
+
 ## Notes
 
-The local `.env`, logs, generated command outputs, and Python cache files are intentionally ignored and not uploaded to GitHub.
+Local `.env` files, logs, command outputs, and Python cache files are intentionally excluded from GitHub.
