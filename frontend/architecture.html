@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GreenTrace System Narrative</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700;9..144,800&family=Sora:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./assets/styles.css" />
+    <script src="./assets/data.js" defer></script>
+    <script src="./assets/app.js" defer></script>
+    <script src="./assets/live.js" defer></script>
+  </head>
+  <body data-page="architecture">
+    <div class="page-wipe"></div>
+    <div class="shell">
+      <header class="topbar">
+        <a class="brand" href="./index.html" data-transition>
+          <span class="brand-badge">GT</span>
+          <span class="brand-copy">
+            <strong>GreenTrace</strong>
+            <span>System narrative</span>
+          </span>
+        </a>
+        <nav class="nav">
+          <a href="./index.html" data-nav="home" data-transition>Overview</a>
+          <a href="./dashboard.html" data-nav="dashboard" data-transition>Dashboard</a>
+          <a href="./architecture.html" data-nav="architecture" data-transition>Architecture</a>
+          <span class="status-badge" id="live-badge">Snapshot</span>
+        </nav>
+      </header>
+
+      <main>
+        <section class="panel">
+          <div class="panel-inner">
+            <div class="section-head reveal">
+              <span class="eyebrow">Architecture / Data Vault 2.0</span>
+              <h1>The warehouse explained with clarity, not clutter.</h1>
+              <p class="hero-lead">
+                This page turns the GreenTrace backend into a presentation-ready
+                system story, so technical depth feels easy to follow.
+              </p>
+            </div>
+            <div class="flow-strip">
+              <article class="flow-step glass-card reveal">
+                <span class="kicker">Step 01</span>
+                <strong>Raw Vault</strong>
+                <p>Preserve facilities, suppliers, shipments, meters, and periods as traceable source truth.</p>
+              </article>
+              <article class="flow-step glass-card reveal">
+                <span class="kicker">Step 02</span>
+                <strong>Business Vault</strong>
+                <p>Apply emissions logic with factor references, versions, and repeatable transformation rules.</p>
+              </article>
+              <article class="flow-step glass-card reveal">
+                <span class="kicker">Step 03</span>
+                <strong>Carbon Ledger</strong>
+                <p>Treat credits as governed assets with issue, retire, and position logic.</p>
+              </article>
+              <article class="flow-step glass-card reveal">
+                <span class="kicker">Step 04</span>
+                <strong>Data Mart</strong>
+                <p>Shape warehouse output into reporting views ready for dashboards and compliance.</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-inner">
+            <div class="section-head reveal">
+              <span class="eyebrow">Layer View</span>
+              <h2>A technical foundation you can present with confidence.</h2>
+              <p>
+                These cards map directly to the project structure, keeping the
+                interface grounded in implementation rather than detached from it.
+              </p>
+            </div>
+            <div class="layer-grid" id="architecture-layer-grid"></div>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-inner">
+            <div class="section-head reveal">
+              <span class="eyebrow">Build Sequence</span>
+              <h2>Eight phases, one coherent delivery story.</h2>
+              <p>
+                The timeline turns the project into a clean delivery sequence
+                that is easier to explain, defend, and remember.
+              </p>
+            </div>
+            <div class="phase-grid" id="phase-timeline"></div>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-inner">
+            <div class="section-head reveal">
+              <span class="eyebrow">Schema Density</span>
+              <h2>The schema, compressed into one readable surface.</h2>
+              <p>
+                Hubs, links, satellites, vault logic, ledger tables, and the
+                mart are surfaced together without overwhelming the page.
+              </p>
+            </div>
+            <div class="schema-grid" id="schema-grid"></div>
+            <div class="panel-note reveal" id="lineage-readiness">
+              The lineage edge table keeps the door open for future
+              transformation playback and deeper audit storytelling.
+            </div>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-inner">
+            <div class="section-head reveal">
+              <span class="eyebrow">Query Explorer</span>
+              <h2>Query cards that make the backend feel tangible.</h2>
+              <p>
+                These examples translate backend logic into readable analyst
+                moments, so the system feels interactive without overwhelming the page.
+              </p>
+            </div>
+            <div class="query-grid" id="query-grid"></div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        GreenTrace system narrative for the ESG Data Vault project. <span data-year></span>
+      </footer>
+    </div>
+  </body>
+</html>

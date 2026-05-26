@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GreenTrace Performance Cockpit</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700;9..144,800&family=Sora:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./assets/styles.css" />
+    <script src="./assets/data.js" defer></script>
+    <script src="./assets/app.js" defer></script>
+    <script src="./assets/live.js" defer></script>
+  </head>
+  <body data-page="dashboard">
+    <div class="page-wipe"></div>
+    <div class="shell">
+      <header class="topbar">
+        <a class="brand" href="./index.html" data-transition>
+          <span class="brand-badge">GT</span>
+          <span class="brand-copy">
+            <strong>GreenTrace</strong>
+            <span>Performance cockpit</span>
+          </span>
+        </a>
+        <nav class="nav">
+          <a href="./index.html" data-nav="home" data-transition>Overview</a>
+          <a href="./dashboard.html" data-nav="dashboard" data-transition>Dashboard</a>
+          <a href="./architecture.html" data-nav="architecture" data-transition>Architecture</a>
+          <span class="status-badge" id="live-badge">Snapshot</span>
+        </nav>
+      </header>
+
+      <main>
+        <section class="panel">
+          <div class="panel-inner split-grid">
+            <div class="section-copy reveal">
+              <span class="eyebrow">Dashboard / Live Carbon Review</span>
+              <h1>Operational carbon, made legible.</h1>
+              <p class="hero-lead">
+                The dashboard condenses the warehouse into a calm command
+                center, balancing executive clarity with enough detail for real
+                operational review.
+              </p>
+              <div class="actions">
+                <a class="button" href="./architecture.html" data-transition>View architecture</a>
+                <a class="button-ghost" href="./index.html" data-transition>Back to overview</a>
+              </div>
+            </div>
+
+            <div class="callout-card glass-card reveal">
+              <span class="kicker">Portfolio footprint</span>
+              <div class="callout-stat" id="dashboard-total">42.55 tCO2e</div>
+              <p id="dashboard-scope">94.6% scope 2 / 5.4% scope 3</p>
+              <div class="panel-note" style="margin-top: 1.25rem;">
+                The current model brings together 2,400 meter events and 40
+                shipment events in one live carbon view.
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-inner">
+            <div class="section-head reveal">
+              <span class="eyebrow">KPIs</span>
+              <h2>A board-ready summary at analyst resolution.</h2>
+              <p>
+                These counters translate warehouse complexity into a fast,
+                confident read without stripping away the underlying truth.
+              </p>
+            </div>
+            <div class="metric-grid" id="kpi-grid"></div>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-inner split-grid">
+            <div>
+              <div class="section-head reveal">
+                <span class="eyebrow">Regional spread</span>
+                <h2>Regional intensity comes into focus instantly.</h2>
+                <p>
+                  The bar view gives geography immediate visual hierarchy,
+                  making it easy to see where modeled load is concentrated.
+                </p>
+              </div>
+              <div class="region-chart" id="region-chart"></div>
+            </div>
+
+            <div>
+              <div class="section-head reveal">
+                <span class="eyebrow">Facility ranking</span>
+                <h2>High-impact facilities surface first.</h2>
+                <p>
+                  Scope 2 and Scope 3 remain side by side so each site can be
+                  understood, not just ranked.
+                </p>
+              </div>
+              <div id="facility-table"></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-inner">
+            <div class="section-head reveal">
+              <span class="eyebrow">Pulse</span>
+              <h2>A time-based view of the operating rhythm.</h2>
+              <p>
+                The interval profile turns raw readings into an operational
+                pulse, making peaks and quiet periods visible at a glance.
+              </p>
+            </div>
+            <div class="glass-card">
+              <div class="load-chart" id="load-chart"></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-inner">
+            <div class="section-head reveal">
+              <span class="eyebrow">Operational mix</span>
+              <h2>Supply-chain context without visual clutter.</h2>
+              <p>
+                These compact modules hold the supporting context around
+                vehicles and supplier sectors while keeping the page calm and readable.
+              </p>
+            </div>
+            <div class="mix-grid">
+              <div id="vehicle-mix"></div>
+              <div id="sector-mix"></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-inner">
+            <div class="section-head reveal">
+              <span class="eyebrow">Live Studio</span>
+              <h2>Monitor, edit, and query the model in one place.</h2>
+              <p>
+                This layer keeps the premium dashboard feel, but adds working
+                controls for sync status, controlled edits, and warehouse inspection.
+              </p>
+            </div>
+
+            <div class="control-grid">
+              <article class="glass-card live-monitor reveal">
+                <span class="kicker">System monitor</span>
+                <h3>Warehouse connection status</h3>
+                <p id="live-source-text">
+                  Waiting for the API to report the current data source.
+                </p>
+
+                <div class="mini-list">
+                  <div class="mini-row">
+                    <span>Last sync</span>
+                    <strong id="live-last-sync">Not synced yet</strong>
+                  </div>
+                  <div class="mini-row">
+                    <span>Reporting period</span>
+                    <strong id="live-reporting-period">N/A</strong>
+                  </div>
+                  <div class="mini-row">
+                    <span>Capture window</span>
+                    <strong id="live-capture-window">N/A</strong>
+                  </div>
+                </div>
+
+                <div class="utility-row">
+                  <button class="button" type="button" id="live-refresh-button">Refresh live view</button>
+                  <label class="toggle">
+                    <input type="checkbox" id="auto-refresh-toggle" checked />
+                    <span>Auto-sync</span>
+                  </label>
+                </div>
+
+                <div class="panel-note">
+                  <strong>System note</strong>
+                  <p id="live-error-text">No connection errors reported.</p>
+                </div>
+              </article>
+
+              <article class="glass-card live-editor reveal">
+                <span class="kicker">Facility editor</span>
+                <h3>Publish a fresh satellite version</h3>
+                <p>
+                  A facility update writes a new row to `sat_facility_attr`,
+                  then the dashboard refreshes to the latest visible version.
+                </p>
+
+                <form class="editor-form" id="facility-editor-form">
+                  <div class="field">
+                    <label for="facility-select">Facility</label>
+                    <select id="facility-select"></select>
+                  </div>
+
+                  <div class="field-grid">
+                    <div class="field">
+                      <label for="facility-name-input">Facility name</label>
+                      <input id="facility-name-input" type="text" maxlength="100" autocomplete="off" />
+                    </div>
+                    <div class="field">
+                      <label for="facility-country-input">Country</label>
+                      <input id="facility-country-input" type="text" maxlength="10" autocomplete="off" />
+                    </div>
+                    <div class="field">
+                      <label for="facility-region-input">Grid region</label>
+                      <input id="facility-region-input" type="text" maxlength="50" autocomplete="off" />
+                    </div>
+                  </div>
+
+                  <div class="utility-row">
+                    <button class="button" type="submit" id="facility-save-button">Publish change</button>
+                  </div>
+                </form>
+
+                <div class="panel-note" id="editor-feedback">
+                  Publishing a facility creates a new satellite version, so
+                  history stays intact while the newest state appears immediately.
+                </div>
+              </article>
+            </div>
+
+            <article class="glass-card sql-console reveal">
+              <span class="kicker">SQL console</span>
+              <h3>Execute a controlled warehouse statement</h3>
+              <p>
+                Use a single approved `SELECT`, `INSERT`, `UPDATE`, or `DELETE`
+                statement, then let the interface redraw around the result.
+              </p>
+
+              <form id="sql-form" class="sql-form">
+                <div class="field">
+                  <label for="sql-input">SQL statement</label>
+                  <textarea id="sql-input" rows="7" spellcheck="false" autocomplete="off" autocapitalize="off">SELECT facility_bk, record_source FROM hub_facility LIMIT 5</textarea>
+                </div>
+                <div class="utility-row">
+                  <button class="button" type="submit">Execute statement</button>
+                </div>
+              </form>
+
+              <div class="panel-note" id="sql-feedback">
+                Use the console to inspect the warehouse or apply a controlled
+                data change.
+              </div>
+              <div id="sql-results"></div>
+            </article>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        GreenTrace performance cockpit for the ESG Data Vault project. <span data-year></span>
+      </footer>
+    </div>
+  </body>
+</html>

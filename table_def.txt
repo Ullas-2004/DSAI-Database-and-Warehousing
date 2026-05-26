@@ -1,0 +1,11 @@
+CREATE TABLE `meta_lineage_edge` (
+  `edge_id` varchar(64) NOT NULL,
+  `from_table` varchar(100) NOT NULL,
+  `from_key` varchar(100) NOT NULL,
+  `to_table` varchar(100) NOT NULL,
+  `to_key` varchar(100) NOT NULL,
+  `transform_name` varchar(100) NOT NULL,
+  `transform_ver` varchar(50) NOT NULL,
+  `executed_ts` datetime NOT NULL,
+  PRIMARY KEY (`edge_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci

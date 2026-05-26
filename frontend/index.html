@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GreenTrace Overview</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700;9..144,800&family=Sora:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./assets/styles.css" />
+    <script src="./assets/data.js" defer></script>
+    <script src="./assets/app.js" defer></script>
+    <script src="./assets/live.js" defer></script>
+  </head>
+  <body data-page="home">
+    <div class="page-wipe"></div>
+    <div class="shell">
+      <header class="topbar">
+        <a class="brand" href="./index.html" data-transition>
+          <span class="brand-badge">GT</span>
+          <span class="brand-copy">
+            <strong>GreenTrace</strong>
+            <span>Carbon intelligence system</span>
+          </span>
+        </a>
+        <nav class="nav">
+          <a href="./index.html" data-nav="home" data-transition>Overview</a>
+          <a href="./dashboard.html" data-nav="dashboard" data-transition>Dashboard</a>
+          <a href="./architecture.html" data-nav="architecture" data-transition>Architecture</a>
+          <span class="status-badge" id="live-badge">Snapshot</span>
+        </nav>
+      </header>
+
+      <main>
+        <section class="panel">
+          <div class="panel-inner hero-grid">
+            <div class="hero-copy reveal">
+              <span class="eyebrow">GreenTrace / Live Carbon Intelligence</span>
+              <h1>An auditable carbon command center for modern operations.</h1>
+              <p class="hero-lead" id="hero-line">
+                From raw operational signals to boardroom-ready reporting,
+                GreenTrace turns fragmented emissions data into a living system
+                you can read, trust, and act on.
+              </p>
+              <div class="actions">
+                <button class="button" type="button" data-open-live-studio>Enter live studio</button>
+                <a class="button-ghost" href="./dashboard.html" data-transition>View dashboard</a>
+                <a class="button-ghost" href="./architecture.html" data-transition>
+                  View architecture
+                </a>
+              </div>
+            </div>
+
+            <div class="hero-stage reveal">
+              <div class="orbital-frame">
+                <div class="orbital-core">
+                  <span id="hero-period">2026 Q1</span>
+                  <strong id="hero-total">42.55 tCO2e</strong>
+                  <p>Live carbon signal</p>
+                </div>
+              </div>
+
+              <div class="signal-chip chip-a">
+                <strong>25 facilities</strong>
+                <span>Auditable operating footprint</span>
+              </div>
+              <div class="signal-chip chip-b">
+                <strong>2,400 readings</strong>
+                <span>Scope 2 signal captured</span>
+              </div>
+              <div class="signal-chip chip-c">
+                <strong>40 shipments</strong>
+                <span>Supply-chain movement tracked</span>
+              </div>
+              <div class="signal-chip chip-d">
+                <strong>22 tables</strong>
+                <span>Vault-to-mart system</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-inner">
+            <div class="section-head reveal">
+              <span class="eyebrow">Experience</span>
+              <h2>A homepage shaped like a premium product reveal.</h2>
+              <p>
+                The scroll is paced as a sequence of full-screen chapters, so
+                the platform feels cinematic, deliberate, and presentation-ready.
+              </p>
+            </div>
+            <div class="metric-grid" id="hero-stats"></div>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-inner">
+            <div class="section-head reveal">
+              <span class="eyebrow">Vault Layers</span>
+              <h2>From source truth to executive clarity.</h2>
+              <p>
+                The interface mirrors the platform itself: capture, compute,
+                govern, and present.
+              </p>
+            </div>
+            <div class="layer-grid" id="layer-grid"></div>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-inner">
+            <div class="section-head reveal">
+              <span class="eyebrow">Narrative Flow</span>
+              <h2>The story unfolds one deliberate frame at a time.</h2>
+              <p>
+                Instead of dropping everything at once, each section reveals one
+                idea clearly so the experience feels guided, paced, and intentional.
+              </p>
+            </div>
+            <div class="story-grid" id="story-grid"></div>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-inner">
+            <div class="section-head reveal">
+              <span class="eyebrow">Highlights</span>
+              <h2>Sharper language, stronger motion, real operational weight.</h2>
+              <p>
+                The next two pages translate the warehouse into an analytical
+                cockpit and a clear architecture narrative.
+              </p>
+            </div>
+            <div class="feature-grid" id="feature-grid"></div>
+            <div class="callout-band" style="margin-top: 1rem;">
+              <article class="callout-card glass-card reveal">
+                <span class="kicker">Dashboard</span>
+                <div class="callout-stat">25 facilities</div>
+                <p>
+                  Track regional load, facility leaders, live refresh, and
+                  controlled edits in one analytical surface.
+                </p>
+              </article>
+              <article class="callout-card glass-card reveal">
+                <span class="kicker">Architecture</span>
+                <div class="callout-stat">8 phases</div>
+                <p>
+                  Explain the Data Vault model, ETL path, lineage mindset, and
+                  reporting structure without opening a dense diagram.
+                </p>
+              </article>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <div class="studio-overlay" id="live-studio-overlay" aria-hidden="true">
+        <button class="studio-backdrop" type="button" data-close-live-studio aria-label="Close live studio"></button>
+        <section class="studio-shell glass-card" aria-labelledby="live-studio-title" role="dialog" aria-modal="true">
+          <div class="studio-header" data-studio-item>
+            <div class="studio-copy">
+              <span class="eyebrow">Live Studio / Executive Control</span>
+              <h2 id="live-studio-title">Operate the model without leaving the story.</h2>
+              <p>
+                Open the live layer from the homepage to monitor sync, publish
+                facility changes, and inspect the warehouse without breaking the
+                cinematic flow.
+              </p>
+            </div>
+            <button class="studio-close" type="button" data-close-live-studio aria-label="Close live studio">
+              Close studio
+            </button>
+          </div>
+
+          <div class="control-grid studio-grid" data-studio-item>
+            <article class="glass-card live-monitor">
+              <span class="kicker">System monitor</span>
+              <h3>Live warehouse status</h3>
+              <p id="live-source-text">
+                Waiting for the API to report the current data source.
+              </p>
+
+              <div class="mini-list">
+                <div class="mini-row">
+                  <span>Last sync</span>
+                  <strong id="live-last-sync">Not synced yet</strong>
+                </div>
+                <div class="mini-row">
+                  <span>Reporting period</span>
+                  <strong id="live-reporting-period">N/A</strong>
+                </div>
+                <div class="mini-row">
+                  <span>Capture window</span>
+                  <strong id="live-capture-window">N/A</strong>
+                </div>
+              </div>
+
+              <div class="utility-row">
+                <button class="button" type="button" id="live-refresh-button">Refresh live view</button>
+                <label class="toggle">
+                  <input type="checkbox" id="auto-refresh-toggle" checked />
+                  <span>Live refresh</span>
+                </label>
+              </div>
+
+              <div class="panel-note">
+                <strong>System note</strong>
+                <p id="live-error-text">No connection errors reported.</p>
+              </div>
+            </article>
+
+            <article class="glass-card live-editor">
+              <span class="kicker">Facility studio</span>
+              <h3>Publish a fresh facility version</h3>
+              <p>
+                Each change writes a new facility satellite record, preserving
+                history while the interface refreshes to the newest state.
+              </p>
+
+              <form class="editor-form" id="facility-editor-form">
+                <div class="field">
+                  <label for="facility-select">Facility</label>
+                  <select id="facility-select"></select>
+                </div>
+
+                <div class="field-grid">
+                  <div class="field">
+                    <label for="facility-name-input">Facility name</label>
+                    <input id="facility-name-input" type="text" maxlength="100" autocomplete="off" />
+                  </div>
+                  <div class="field">
+                    <label for="facility-country-input">Country</label>
+                    <input id="facility-country-input" type="text" maxlength="10" autocomplete="off" />
+                  </div>
+                  <div class="field">
+                    <label for="facility-region-input">Grid region</label>
+                    <input id="facility-region-input" type="text" maxlength="50" autocomplete="off" />
+                  </div>
+                </div>
+
+                <div class="utility-row">
+                  <button class="button" type="submit" id="facility-save-button">Publish change</button>
+                </div>
+              </form>
+
+              <div class="panel-note" id="editor-feedback">
+                Publishing a facility creates a new satellite version, so
+                history stays intact and the latest state becomes visible immediately.
+              </div>
+            </article>
+          </div>
+
+          <article class="glass-card sql-console" data-studio-item>
+            <span class="kicker">SQL console</span>
+            <h3>Run a controlled query or update</h3>
+            <p>
+              Use one approved statement at a time to inspect or adjust the
+              warehouse, then watch the interface refresh around the result.
+            </p>
+
+            <form id="sql-form" class="sql-form">
+              <div class="field">
+                <label for="sql-input">SQL statement</label>
+                <textarea id="sql-input" rows="7" spellcheck="false" autocomplete="off" autocapitalize="off">SELECT facility_bk, record_source FROM hub_facility LIMIT 5</textarea>
+              </div>
+              <div class="utility-row">
+                <button class="button" type="submit">Execute statement</button>
+              </div>
+            </form>
+
+            <div class="panel-note" id="sql-feedback">
+              Inspect the warehouse or apply a controlled data change from this studio.
+            </div>
+            <div id="sql-results"></div>
+          </article>
+        </section>
+      </div>
+
+      <footer class="footer">
+        GreenTrace experience for the ESG Data Vault project. <span data-year></span>
+      </footer>
+    </div>
+  </body>
+</html>

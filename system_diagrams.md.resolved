@@ -1,0 +1,156 @@
+## GreenTrace Architecture Diagram
+
+```mermaid
+graph TD
+    subgraph Data Sources
+        CSV[Raw CSV Files]
+        Manual[Manual ESG Logs]
+    end
+
+    subgraph ETL Pipeline
+        Python[Python Pandas Scripts]
+        Loaders[MySQL Data Loaders]
+    end
+
+    subgraph Raw Data Vault
+        Hubs[(Hubs:<br>Facility, Meter,<br>Supplier, Credit)]
+        Links[(Links:<br>Relationships)]
+        Sats[(Satellites:<br>Attributes & Readings)]
+    end
+
+    subgraph Business Vault
+        Calc2[(Scope 2 Events)]
+        Calc3[(Scope 3 Events)]
+    end
+
+    subgraph Ledger
+        L_Txn[(Credit Transactions)]
+        L_Pos[(Credit Positions)]
+    end
+
+    subgraph Information Delivery
+        Mart[(Data Mart:<br>CSRD Summary)]
+        PBI[Power BI Dashboard]
+    end
+
+    CSV --> Python
+    Manual --> Python
+    Python --> Loaders
+    Loaders --> Hubs
+    Loaders --> Links
+    Loaders --> Sats
+
+    Hubs -.-> Calc2
+    Sats -.-> Calc2
+    Hubs -.-> Calc3
+    Sats -.-> Calc3
+
+    Calc2 --> Mart
+    Calc3 --> Mart
+    
+    Hubs -.-> L_Txn
+    L_Txn --> L_Pos
+    L_Pos --> Mart
+    
+    Mart --> PBI
+```
+
+---
+
+## GreenTrace Data Vault Entity Relationship Diagram
+
+```mermaid
+erDiagram
+    %% Hubs
+    hub_facility {
+        char(32) hk_facility PK
+        varchar(50) facility_bk UK
+        datetime load_dts
+    }
+    hub_supplier {
+        char(32) hk_supplier PK
+        varchar(50) supplier_bk UK
+    }
+    hub_meter {
+        char(32) hk_meter PK
+        varchar(50) meter_bk UK
+    }
+    hub_shipment {
+        char(32) hk_shipment PK
+        varchar(50) shipment_bk UK
+    }
+    hub_carbon_credit {
+        char(32) hk_credit PK
+        varchar(50) credit_bk UK
+    }
+    hub_reporting_period {
+        char(32) hk_period PK
+        varchar(50) period_bk UK
+    }
+
+    %% Links
+    link_facility_meter {
+        char(32) hk_facility_meter PK
+        char(32) hk_facility FK
+        char(32) hk_meter FK
+    }
+    link_facility_period {
+        char(32) hk_facility_period PK
+        char(32) hk_facility FK
+        char(32) hk_period FK
+    }
+    link_shipment_supplier_facility {
+        char(32) hk_ssf PK
+        char(32) hk_shipment FK
+        char(32) hk_supplier FK
+        char(32) hk_facility FK
+    }
+
+    %% Relationships for Links
+    hub_facility ||--o{ link_facility_meter : connects
+    hub_meter ||--o{ link_facility_meter : connects
+    
+    hub_facility ||--o{ link_facility_period : maps_to
+    hub_reporting_period ||--o{ link_facility_period : maps_to
+    
+    hub_shipment ||--o{ link_shipment_supplier_facility : involves
+    hub_supplier ||--o{ link_shipment_supplier_facility : involves
+    hub_facility ||--o{ link_shipment_supplier_facility : involves
+
+    %% Satellites
+    sat_facility_attr {
+        char(32) hk_facility PK,FK
+        datetime load_dts PK
+        varchar facility_name
+    }
+    sat_supplier_attr {
+        char(32) hk_supplier PK,FK
+        datetime load_dts PK
+        varchar supplier_name
+    }
+    sat_energy_reading {
+        char(32) hk_meter PK,FK
+        datetime reading_ts PK
+        decimal kwh_value
+    }
+    sat_carbon_credit_attr {
+        char(32) hk_credit PK,FK
+        datetime load_dts PK
+        varchar registry_name
+    }
+
+    hub_facility ||--o{ sat_facility_attr : describes
+    hub_supplier ||--o{ sat_supplier_attr : describes
+    hub_meter ||--o{ sat_energy_reading : describes
+    hub_carbon_credit ||--o{ sat_carbon_credit_attr : describes
+
+    %% Business Vault & Ledger
+    bv_scope2_emission_event }o--|| hub_facility : uses
+    bv_scope2_emission_event }o--|| hub_meter : uses
+    ledger_credit_txn }o--|| hub_carbon_credit : tracks
+    ledger_credit_position }o--|| hub_carbon_credit : aggregates
+
+    %% Data Mart
+    dm_csrds_emissions_summary }o--|| hub_facility : summarizes
+    dm_csrds_emissions_summary }o--|| hub_reporting_period : temporal
+```

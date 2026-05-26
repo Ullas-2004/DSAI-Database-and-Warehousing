@@ -1,0 +1,6 @@
+.env
+*.log
+out.txt
+schema_out.txt
+__pycache__/
+*.pyc

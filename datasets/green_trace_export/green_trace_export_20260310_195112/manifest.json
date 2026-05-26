@@ -1,0 +1,119 @@
+{
+  "db_path": "C:\\DBMWdata\\green_trace.duckdb",
+  "export_dir": "C:\\DBMWdata\\green_trace_export_20260310_195112",
+  "canonical_namespace": "green_trace.green_trace",
+  "matched_tables": 22,
+  "exported_at": "2026-03-10T19:51:16",
+  "tables": [
+    {
+      "table": "bv_scope2_emission_event",
+      "row_count": 2400,
+      "file": "bv_scope2_emission_event.csv"
+    },
+    {
+      "table": "bv_scope3_emission_event",
+      "row_count": 40,
+      "file": "bv_scope3_emission_event.csv"
+    },
+    {
+      "table": "dm_csrds_emissions_summary",
+      "row_count": 0,
+      "file": "dm_csrds_emissions_summary.csv"
+    },
+    {
+      "table": "hub_carbon_credit",
+      "row_count": 10,
+      "file": "hub_carbon_credit.csv"
+    },
+    {
+      "table": "hub_facility",
+      "row_count": 25,
+      "file": "hub_facility.csv"
+    },
+    {
+      "table": "hub_meter",
+      "row_count": 100,
+      "file": "hub_meter.csv"
+    },
+    {
+      "table": "hub_reporting_period",
+      "row_count": 1,
+      "file": "hub_reporting_period.csv"
+    },
+    {
+      "table": "hub_shipment",
+      "row_count": 40,
+      "file": "hub_shipment.csv"
+    },
+    {
+      "table": "hub_supplier",
+      "row_count": 12,
+      "file": "hub_supplier.csv"
+    },
+    {
+      "table": "ledger_credit_position",
+      "row_count": 0,
+      "file": "ledger_credit_position.csv"
+    },
+    {
+      "table": "ledger_credit_txn",
+      "row_count": 0,
+      "file": "ledger_credit_txn.csv"
+    },
+    {
+      "table": "link_facility_meter",
+      "row_count": 100,
+      "file": "link_facility_meter.csv"
+    },
+    {
+      "table": "link_facility_period",
+      "row_count": 25,
+      "file": "link_facility_period.csv"
+    },
+    {
+      "table": "link_shipment_supplier_facility",
+      "row_count": 40,
+      "file": "link_shipment_supplier_facility.csv"
+    },
+    {
+      "table": "meta_lineage_edge",
+      "row_count": 0,
+      "file": "meta_lineage_edge.csv"
+    },
+    {
+      "table": "ref_emission_factor",
+      "row_count": 6,
+      "file": "ref_emission_factor.csv"
+    },
+    {
+      "table": "sat_carbon_credit_attr",
+      "row_count": 10,
+      "file": "sat_carbon_credit_attr.csv"
+    },
+    {
+      "table": "sat_energy_reading",
+      "row_count": 2400,
+      "file": "sat_energy_reading.csv"
+    },
+    {
+      "table": "sat_facility_attr",
+      "row_count": 25,
+      "file": "sat_facility_attr.csv"
+    },
+    {
+      "table": "sat_manual_esg_metrics",
+      "row_count": 0,
+      "file": "sat_manual_esg_metrics.csv"
+    },
+    {
+      "table": "sat_shipment_activity",
+      "row_count": 40,
+      "file": "sat_shipment_activity.csv"
+    },
+    {
+      "table": "sat_supplier_attr",
+      "row_count": 12,
+      "file": "sat_supplier_attr.csv"
+    }
+  ]
+}
